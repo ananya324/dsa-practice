@@ -1,2 +1,2 @@
 # dsa-practice
-LeetCode practice 
+Solutions for problems I solve daily on LeetCode. 
