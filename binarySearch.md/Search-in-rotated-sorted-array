@@ -1,0 +1,39 @@
+// LeetCode 33: Search in Rotated Sorted Array
+// Approach: Modified Binary Search
+// Time Complexity: O(log n)
+// Space Complexity: O(1)
+//
+// At each step, one half of the array is sorted.
+// Decide which half is sorted and narrow the search space.
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int n = nums.size();
+        int low = 0 , high = n - 1;
+        while(low <= high){
+            int mid = (low + high)/2 ;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[low] <= nums[mid]){
+                if(target < nums[mid] && nums[low] <= target){
+                    high = mid - 1;
+                }
+                else{
+                    low = mid + 1;
+                }
+            }
+            else{
+                if(nums[mid] < target && nums[high] >= target){
+                    low = mid + 1;
+                }
+                else{
+                    high = mid - 1;
+                }
+            }
+        }
+        return - 1;
+        
+    }
+};
